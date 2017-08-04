@@ -4,6 +4,11 @@ String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
+<%
+// 根据用户权限控制内容展示
+boolean admin = true;
+%>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -33,6 +38,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script src="js/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap -->
 <script src="js/bootstrap-3.3.7.min.js"></script>
+<!-- JavaScript Cookie https://github.com/js-cookie/js-cookie -->
+<script src="js/js.cookie.js"></script>
 
 <style type="text/css">
 body {
@@ -67,7 +74,7 @@ span.module-font {
 
 <script type="text/javascript">
 $(document).ready(function() {
-$(".carousel").carousel({
+  $(".carousel").carousel({
     interval: 2000, // 图片切换周期
     pause: "hover" // 鼠标悬停
   });
@@ -76,7 +83,9 @@ $(".carousel").carousel({
 </head>
 
 <body>
-<jsp:include page="nav.jsp"></jsp:include>
+<jsp:include page="nav.jsp">
+  <jsp:param name="admin" value="<%= admin %>" />
+</jsp:include>
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
@@ -161,8 +170,16 @@ $(".carousel").carousel({
   </div>-->
 
   <br /><br />
+  <%
+  String code1 = "col-xs-4";
+  String code2 = "col-xs-2 hidden";
+  if (admin) {
+    code1 = "col-xs-2";
+    code2 = "col-xs-2";
+  }
+  %>
   <div class="rows">
-    <div class="col-xs-2 col-xs-offset-2 text-center">
+    <div id="moduleSearch" class="<%= code1 %> col-xs-offset-2 text-center">
       <a href="simple_search.jsp" class="center-block module">
         <br />
         <button class="button button-primary button-circle button-giant"><i class="fa fa-search"></i></button>
@@ -171,7 +188,7 @@ $(".carousel").carousel({
         <br /><br />
       </a>
     </div>
-    <div class="col-xs-2 text-center">
+    <div id="moduleWord" class="<%= code1 %> text-center">
       <a href="word_process.jsp" class="center-block module">
         <br />
         <button class="button button-primary button-circle button-giant"><i class="fa fa-balance-scale"></i></button>
@@ -180,7 +197,7 @@ $(".carousel").carousel({
         <br /><br />
       </a>
     </div>
-    <div class="col-xs-2 text-center">
+    <div id="moduleCate" class="<%= code2 %> text-center">
       <a href="cate_manage.jsp" class="center-block module">
         <br />
         <button class="button button-primary button-circle button-giant"><i class="fa fa-server"></i></button>
@@ -189,7 +206,7 @@ $(".carousel").carousel({
         <br /><br />
       </a>
     </div>
-    <div class="col-xs-2 text-center">
+    <div id="moduleSys" class="<%= code2 %> text-center">
       <a href="sys_manage.jsp" class="center-block module">
         <br />
         <button class="button button-primary button-circle button-giant"><i class="fa fa-cog"></i></button>

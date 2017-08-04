@@ -4,6 +4,11 @@ String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
+<%
+// 根据用户权限控制内容展示
+boolean admin = true;
+%>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -52,7 +57,9 @@ $(document).ready(function() {
 </head>
 
 <body>
-<jsp:include page="nav.jsp"></jsp:include>
+<jsp:include page="nav.jsp">
+  <jsp:param name="admin" value="<%= admin %>" />
+</jsp:include>
 
 <div class="vertical-center">
 <div class="container">
