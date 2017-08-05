@@ -72,17 +72,11 @@ $(document).ready(function() {
     <label for="inputFile" class="control-label">分词</label>
     <textarea class="form-control" rows="6" style="resize: none;"></textarea>
   </div>
-  <div class="text-right">
-    <button type="button" class="btn btn-primary">&nbsp;生成&nbsp;</button>
-  </div>
   </div>
   <div class="col-xs-6">
   <div class="form-group">
     <label for="inputFile" class="control-label">关键词提取</label>
     <textarea class="form-control" rows="6" style="resize: none;"></textarea>
-  </div>
-  <div class="text-right">
-    <button type="button" class="btn btn-primary">&nbsp;生成&nbsp;</button>
   </div>
   </div>
   <div class="col-xs-6">
@@ -90,17 +84,11 @@ $(document).ready(function() {
     <label for="inputFile" class="control-label">自动摘要生成</label>
     <textarea class="form-control" rows="6" style="resize: none;"></textarea>
   </div>
-  <div class="text-right">
-    <button type="button" class="btn btn-primary">&nbsp;生成&nbsp;</button>
-  </div>
   </div>
   <div class="col-xs-6">
   <div class="form-group">
     <label for="inputFile" class="control-label">短语提取</label>
     <textarea class="form-control" rows="6" style="resize: none;"></textarea>
-  </div>
-  <div class="text-right">
-    <button type="button" class="btn btn-primary">&nbsp;生成&nbsp;</button>
   </div>
   </div>
   </div>
